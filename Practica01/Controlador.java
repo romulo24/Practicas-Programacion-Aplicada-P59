@@ -12,7 +12,7 @@ public class Controlador {
 	public void print(String texto) {
 		System.out.println(texto);
 	}
-	
+
 	public void RegistrarFormaRectangulo() {
 		String color;
 		int x,y;
@@ -41,10 +41,9 @@ public class Controlador {
 		}else{
 			print("Sitema lleno");
 		}
-		
+
 	}
-	
-	
+
 	public void RegistarFormaElipse() {
 		String color;
 		double r,R;
@@ -72,15 +71,13 @@ public class Controlador {
 			print("Sitema lleno");
 		}
 	}
-	
-	
+
 	public void listar() {
 		for(int i=0; i<totalFormas;i++) {
 			print(formas[i].toString());
 		}
 	}
-	
-	
+
 	public void RegistarFormaCuadrado() {
 		String color;
 		int x,y;
@@ -108,8 +105,6 @@ public class Controlador {
 		}else{
 			print("Sitema lleno");
 		}
-		
-		
 	}
 	public void RegistarFormaCirculo() {
 		String color;
@@ -125,7 +120,7 @@ public class Controlador {
 			print("Sitema lleno");
 		}
 	}
-	
+
 	public void RegistarFormaCilindro() {
 		String color;
 		double radio;
@@ -144,7 +139,6 @@ public class Controlador {
 		}
 	}
 
-	
 	public void cambiarColor() {
 		String color;
 		print("Ingrese el color que desea cambiar a todas las figuras:");
@@ -153,13 +147,12 @@ public class Controlador {
 			formas[i].setColor(color);
 		}
 	}
-	
-	
+
+
 	public void totalFormas() {
 		print("Numero de Formas registradas : "+ totalFormas);
 	}
-	
-	
+
 	public void mover() {
 		int x,y;
 		print("Posicion? ");
@@ -171,8 +164,8 @@ public class Controlador {
 			formas[i].mover(x,y);
 		}
 	}
-	
-	
+
+
 }
 
 
