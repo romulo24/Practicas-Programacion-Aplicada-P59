@@ -5,7 +5,7 @@ public class Libro {
 	private long ISBN;
 	private String autor;
 	private String titulo;
-	private int yearPublicacion;
+	private int year;
 	private boolean estado;
 	public long getISBN() {
 		return ISBN;
@@ -26,18 +26,12 @@ public class Libro {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public int getYearPublicacion() {
-		return yearPublicacion;
-	}
-	public void setYearPublicacion(int yearPublicacion) {
-		this.yearPublicacion = yearPublicacion;
-	}
 	
-	public Libro(long ISBN,String autor,String titulo,int yearPublicacion) {
+	public Libro(long ISBN,String autor,String titulo,int year) {
 		this.ISBN=ISBN;
 		this.autor=autor;
 		this.titulo=titulo;
-		this.yearPublicacion=yearPublicacion;
+		this.year=year;
 		this.estado=true;
 	
 	}
@@ -46,5 +40,11 @@ public class Libro {
 	}
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
 	}
 }
