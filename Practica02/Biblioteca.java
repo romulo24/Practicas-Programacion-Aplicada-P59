@@ -1,14 +1,17 @@
 package Practica02;
 import java.util.Scanner;
-
 import java.util.ArrayList;
+
 public class Biblioteca {
+	//ATRWIBUTOS 
 	private ArrayList<Libro>libros;
 	private ArrayList<String>nombres;
-	private long busqueda;
-	private boolean estado=false;
+	private long ISBN;
+	private String autor,nombre;
+	private String titulo;
+	private int year,posicion;
 	public Scanner leer = new Scanner(System.in); 
-
+	//CONSTRUCTOR
 	public Biblioteca() {
 		libros = new ArrayList<Libro>();
 		nombres = new ArrayList<String>();
@@ -27,26 +30,20 @@ public class Biblioteca {
 		}
 
 	}
-	public void registrarLibro() {
-		long ISBN;
-		String autor;
-		String titulo;
-		int yearPublicacion;
-
+	public void registrarLibros() {
 		print(" = = = = = REGISTRAR LIBRO = = = = = ");
-
 		print("Ingrese el ISBN del libro: ");
 		ISBN = leer.nextLong();
 		leer.nextLine();
-		if(buscar(ISBN))
+		if(buscarLibro(ISBN))
 		{
 			print("Autor :");
 			autor = leer.nextLine();
 			print("Titulo :");
 			titulo = leer.nextLine();
 			print("Año :");
-			yearPublicacion = leer.nextInt();
-			addLibro(new Libro(ISBN,autor,titulo,yearPublicacion));
+			year = leer.nextInt();
+			addLibro(new Libro(ISBN,autor,titulo,year));
 		}
 	}
 	public void listarLibros() {
@@ -58,75 +55,95 @@ public class Biblioteca {
 					+","+estadoLibro(libros.get(i).getEstado(),i));
 		}
 	}
-	public void prestarLibro() {
-		long ISBN;
-		String nombre;
-		print(" = = = = =  PRESTAR DE LIBROS = = = = = ");
-		print("Ingrese el ISBN del libro: ");
+	public void prestarLibros() {
+
+		print("Ingrese el ISBN:");
 		ISBN = leer.nextLong();
 		leer.nextLine();
-		if(buscarLibro(ISBN)==true){
-			print("Ingrese el Nombre de la persona que prestara el libro:");
+		if(buscarDisponible(ISBN) == false)
+		{
+			print("Ingrese el nombre de la persona que solicita el libro: ");
 			nombre = leer.nextLine();
-			for(int i=0;i<libros.size();i++) {
-				if(ISBN==libros.get(i).getISBN()) {	
-					if(libros.get(i).getEstado()==true) {
+			for(int i=0;i<libros.size();i++)
+			{
+				if(ISBN == libros.get(i).getISBN())
+				{
+					if(libros.get(i).getEstado() == true)
+					{
 						libros.get(i).setEstado(false);
 						nombres.add(nombre);
-						print("Este registro se realizo de forma correcta");
-					}else {
-						print("Este libro ya seencuentra prestado");
+						print("");
+						print("El libro ha sido prestado al USUARIO: " + nombre);
 					}
+					else
+						print("Mensaje: Este libro no se encuentra disponible ");	
 				}
 			}
 		}
+
+
 	}
-	public void devolverLibro() {
-		long ISBN;
-		print(" = = = = =  DEVOLVER LIBROS = = = = = ");
-		print("Ingrese el ISBN del libro: ");
+	public boolean buscarLibro(long ISBN)
+	{
+		boolean libroHallado = false;
+		
+		for(int i=0;i<libros.size();i++)
+		{
+			if(ISBN == libros.get(i).getISBN())
+			{
+				libroHallado = true;
+				posicion = i;
+			}
+		}
+		if(libroHallado)
+		{
+			print("Este libro ya se encuentra registrado");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	public boolean buscarDisponible(long ISBN)
+	{
+		boolean libroHallado = false;
+		for(int i=0;i<libros.size();i++)
+		{
+			if(ISBN == libros.get(i).getISBN())
+				libroHallado = true;
+		}
+		if(libroHallado)
+		{
+			return false;
+		}
+		else
+		{
+			print("No se encontre ningun libro con el N de ISBN: " + ISBN + " que acaba de ingresar.");
+			return true;
+		}
+	}
+	public void devolverLibros()
+	{
+		print("Ingrese el ISBN:");
 		ISBN = leer.nextLong();
-		for(int i=0;i<libros.size();i++) {
-			if(ISBN==libros.get(i).getISBN()) {	
-				if(libros.get(i).getEstado()==false) {
-					libros.get(i).setEstado(true);
-					nombres.remove(i);
-				}else {
-					print("Este libro se encuentra Disponible");
+		leer.nextLine();
+		if(buscarDisponible(ISBN) == false)
+		{
+			for(int i=0;i<libros.size();i++)
+			{
+				if(ISBN== libros.get(i).getISBN())
+				{
+					if(libros.get(i).getEstado() == false)
+					{
+						libros.get(i).setEstado(true);
+						nombres.remove(i);
+						print("El libro ha sido entregado a la biblioteca");
+					}
+					else
+						print("El libro esta disponible para su adquisión");
 				}
 			}
-
-			print("No se ha encontro ningun libro con el ISBN : "+ISBN);
-		}
-	}
-	public boolean buscar(long ISBN) {
-		boolean bandera=false;
-		int ps = 0;
-		for(int i=0;i<libros.size();i++) {
-			if(ISBN == libros.get(i).getISBN()) {
-				bandera = true;
-
-			}
-
-		}if(bandera) {
-			print("Este libro ya seencuentra Registrado");
-			return false;
-
-		}else {
-			return true;
-		}
-
-
-	}
-	public boolean buscarLibro(long ISBN) {
-		for(Libro l: libros) {
-			busqueda = l.getISBN();
-		}
-		if(busqueda == ISBN) {
-			return true;
-		}else {
-			print("No se ha encontro ningun libro con el ISBN : "+ISBN);
-			return false;
 		}
 	}
 }

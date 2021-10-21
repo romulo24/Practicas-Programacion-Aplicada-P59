@@ -7,6 +7,8 @@ public class Libro {
 	private String titulo;
 	private int year;
 	private boolean estado;
+	//ENCAPSULAMIENTO
+	
 	public long getISBN() {
 		return ISBN;
 	}
@@ -25,17 +27,7 @@ public class Libro {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-	
-	public Libro(long ISBN,String autor,String titulo,int year) {
-		this.ISBN=ISBN;
-		this.autor=autor;
-		this.titulo=titulo;
-		this.year=year;
-		this.estado=true;
-	
-	}
-	public boolean getEstado() {
+	}public boolean getEstado() {
 		return estado;
 	}
 	public void setEstado(boolean estado) {
@@ -47,4 +39,14 @@ public class Libro {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	//CONSTRUCTOR
+	public Libro(long ISBN,String autor,String titulo,int year) {
+		this.ISBN=ISBN;
+		this.autor=autor;
+		this.titulo=titulo;
+		this.year=year;
+		this.estado=true;
+	
+	}
+	
 }

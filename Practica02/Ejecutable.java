@@ -18,15 +18,17 @@ public class Ejecutable {
 			print(" Ingrese una opcion:");
 			opcion = leer.nextInt();
 			if(opcion == 1) {
-				libreria.registrarLibro();
+				libreria.registrarLibros();
 
 			}if(opcion == 2) {
 				libreria.listarLibros();
 			}if(opcion ==3) {
-				libreria.prestarLibro();
+				libreria.prestarLibros();
 			}if(opcion == 4) {
+				libreria.devolverLibros();
 
 			}if(opcion == 0) {
+				print("AVISO: Gracias por utilizar este programa!");
 				break;
 			}
 		}
