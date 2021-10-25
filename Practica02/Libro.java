@@ -46,7 +46,7 @@ public class Libro {
 		this.titulo=titulo;
 		this.year=year;
 		this.estado=true;
-	this.nombre="";
+	        this.nombre="";
 	}
 	public String getNombre() {
 		return nombre;
