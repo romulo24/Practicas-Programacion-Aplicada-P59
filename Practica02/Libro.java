@@ -4,7 +4,7 @@ public class Libro {
 	//ATRIBUTOS
 	private long ISBN;
 	private String autor;
-	private String titulo;
+	private String titulo,nombre;
 	private int year;
 	private boolean estado;
 	//ENCAPSULAMIENTO
@@ -46,7 +46,13 @@ public class Libro {
 		this.titulo=titulo;
 		this.year=year;
 		this.estado=true;
-	
+	this.nombre="";
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 }

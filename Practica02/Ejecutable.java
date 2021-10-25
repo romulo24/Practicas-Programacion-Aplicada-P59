@@ -10,11 +10,15 @@ public class Ejecutable {
 
 		while(true) {
 			print(" = = = = = BIBLIOTECA MUNICIPAL = = = = =");
+			print("Libros registrados: "+libreria.librosDisponibles());
+			print("Libros prestados :"+libreria.getContador());
+			print("Libros disponibles :"+libreria.getContador2());
+			print("");
 			print("1. Ingresar un libro");
 			print("2. Listar los libros");
 			print("3. Prestar un libro");
 			print("4. Devolver un libro");
-			print("0. Salir");
+			print("0. Salir");        
 			print(" Ingrese una opcion:");
 			opcion = leer.nextInt();
 			if(opcion == 1) {
