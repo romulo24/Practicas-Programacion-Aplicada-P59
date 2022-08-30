@@ -1,0 +1,6 @@
+01 --- Practica de Archivos ---- ALTA ------ 60.0 ------- false
+02 --- Estudiar archivos ---- MEDIA ------ 0.0 ------- true
+03 --- file ---- BAJA ------ 60.0 ------- true
+04 --- Leer ---- ALTA ------ 100.0 ------- true
+05 --- Pruebas ---- ALTA ------ 70.0 ------- true
+06 --- Deber de Ingles ---- MEDIA------ 30.0 ------- true
